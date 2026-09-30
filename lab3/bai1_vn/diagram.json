@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "author": "Quan",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": 40,
+      "left": 250,
+      "attrs": {
+        "color": "green",
+        "label": "Internet OK (GPIO 2)"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_red",
+      "top": 120,
+      "left": 250,
+      "attrs": {
+        "color": "red",
+        "label": "Watchdog Warning (GPIO 4)"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_sim",
+      "top": 200,
+      "left": 250,
+      "attrs": {
+        "color": "black",
+        "label": "Simulate Network Drop (GPIO 18)"
+      }
+    }
+  ],
+  "connections": [
+    [ "led_green:A", "esp:2", "green", [] ],
+    [ "led_green:C", "esp:GND.1", "black", [] ],
+    [ "led_red:A", "esp:4", "red", [] ],
+    [ "led_red:C", "esp:GND.1", "black", [] ],
+    [ "btn_sim:1.l", "esp:18", "blue", [] ],
+    [ "btn_sim:2.r", "esp:GND.3", "black", [] ],
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ]
+  ]
+}
